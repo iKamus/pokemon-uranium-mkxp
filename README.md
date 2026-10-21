@@ -1,11 +1,12 @@
 # Pokémon Uranium on mkxp-z — builds
 
-Windows builds (x64 and 32-bit) of **Pokémon Uranium 1.4.0c** running on the
-modern [mkxp-z](https://github.com/mkxp-z/mkxp-z) engine instead of the old RGSS
-player.
+[Español](README.es.md) · **English**
 
-This repository only hosts the **release binaries**. It contains no game assets
-and no source code.
+Windows builds (x64 and 32-bit) of **Pokémon Uranium 1.4.0c** running on the modern
+[mkxp-z](https://github.com/mkxp-z/mkxp-z) engine instead of the old RGSS player.
+
+This repository only hosts the **release binaries**. It contains no game assets and
+no source code.
 
 ## Requirements
 
@@ -21,28 +22,18 @@ and no source code.
 3. Extract it **over** the game folder, replacing files when asked.
 4. Run **`mkxp-z.exe`**.
 
-The archive contains:
-
-```
-mkxp-z.exe                  engine
-x64-msvcrt-ruby310.dll      Ruby 3.1 runtime (msvcrt-ruby310.dll on 32-bit)
-zlib1.dll
-stdlib/                     Ruby standard library
-Data/Scripts.rxdata         compiled game scripts (required to run)
-mkxp.json                   engine configuration for this port
-```
+The archive contains `mkxp-z.exe`, `x64-msvcrt-ruby310.dll` (`msvcrt-ruby310.dll` on
+32-bit), `zlib1.dll`, `stdlib/`, `Data/Scripts.rxdata` and `mkxp.json`.
 
 Saves live in `%USERPROFILE%\Saved Games\Pokemon Uranium`; engine settings in
 `%APPDATA%\Pokemon Uranium\mkxp.json`.
 
 ## What's new
 
-- **Gamepad works** — legacy save bindings are migrated to mkxp-z's controller
-  codes and analog sticks get their defaults back.
+- **Gamepad works** — legacy save bindings are migrated to mkxp-z's controller codes
+  and analog sticks get their defaults back.
 - **No RGSS archive / no startup crash** on the save-folder lookup.
-- **In-game engine settings** — *Options* exposes frame rate (Monitor / 40 / 60 /
-  120 / 144), smoothing, integer scaling, FPS counter and blit mode. Changes are
-  written to your user `mkxp.json` and apply after a restart.
+- **In-game engine settings** (see below).
 - **Rebindable controls** — *Options → Set Controls*, keyboard and gamepad.
 - **Scaling** — integer scaling and smoothing for high-resolution displays.
 
@@ -55,6 +46,40 @@ Saves live in `%USERPROFILE%\Saved Games\Pokemon Uranium`; engine settings in
 | `F2` | toggle FPS display |
 | `F8` | screenshot |
 | `F12` | reset the game |
+
+## Engine options
+
+Last five entries of the in-game *Options* menu. They are written to your user
+`mkxp.json` and **read only at startup**, so restart the game to apply them. Delete
+`%APPDATA%\Pokemon Uranium\mkxp.json` to reset everything.
+
+| Option | Values | What it does |
+| --- | --- | --- |
+| **Frame Rate** | Monitor, 40, 60, 120, 144 | Target frame rate. `Monitor` follows the screen refresh (mkxp-z forces VSync and reports the real refresh rate to the game); the numbers are fixed caps. |
+| **Smoothing** | Off, Bilinear, xBRZ | Filter used when upscaling. `Off` = crisp pixels, `Bilinear` = soft edges, `xBRZ` = smooths pixel art. |
+| **Integer Scaling** | On, Off | Whole-number scaling so pixels stay even and sharp. Turn off only if you prefer stretching. |
+| **FPS Counter** | On, Off | Average FPS in the window title (same as `F2`). |
+| **Blit Mode** | On, Off | GPU blit path. Turn off only if text or tiles fail to render. |
+
+### Recommended settings
+
+| | Most faithful to the original | Smoothest on a modern PC |
+| --- | --- | --- |
+| Frame Rate | `40` | `Monitor` |
+| Smoothing | `Off` | `Off` or `Bilinear` |
+| Integer Scaling | `On` | `On` |
+| FPS Counter | `Off` | `Off` |
+| Blit Mode | `On` | `On` |
+
+**Important:** Uranium is frame-based, with no delta-time compensation. Raising the
+frame rate speeds up the whole game. `40` is the original speed; `Monitor` on a
+144 Hz screen runs ~3.6x faster.
+
+### Window size
+
+*Options → Screen Size* (`S` / `M` / `L` / `F`) changes the window scale and
+`Alt` + `Enter` toggles fullscreen. The game renders at 512×384, so larger windows
+are upscaled; use *Integer Scaling* to keep pixels sharp.
 
 ## Credits
 
