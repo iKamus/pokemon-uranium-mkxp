@@ -1,22 +1,23 @@
 # Pokémon Uranium on mkxp-z — builds
 
-Windows x64 builds of **Pokémon Uranium 1.4.0c** running on the modern
-[mkxp-z](https://github.com/mkxp-z/mkxp-z) engine instead of the old RGSS player.
+Windows builds (x64 and 32-bit) of **Pokémon Uranium 1.4.0c** running on the
+modern [mkxp-z](https://github.com/mkxp-z/mkxp-z) engine instead of the old RGSS
+player.
 
 This repository only hosts the **release binaries**. It contains no game assets
 and no source code.
 
 ## Requirements
 
-- **Windows 10/11, 64-bit.**
+- **Windows 10/11.** Use the `win64` archive on 64-bit Windows, `win32` on 32-bit.
 - Your own copy of **Pokémon Uranium 1.4.0c** (the game's `Audio/`, `Graphics/`,
   `Fonts/` and `Data/` folders). The game is not distributed here.
 
 ## Install
 
 1. Get a clean Pokémon Uranium 1.4.0c folder.
-2. Download `uranium-mkxp-engine-win64.zip` from
-   [Releases](../../releases).
+2. Download `uranium-mkxp-engine-win64.zip` (or `uranium-mkxp-engine-win32.zip`)
+   from [Releases](../../releases).
 3. Extract it **over** the game folder, replacing files when asked.
 4. Run **`mkxp-z.exe`**.
 
@@ -24,7 +25,7 @@ The archive contains:
 
 ```
 mkxp-z.exe                  engine
-x64-msvcrt-ruby310.dll      Ruby 3.1 runtime
+x64-msvcrt-ruby310.dll      Ruby 3.1 runtime (msvcrt-ruby310.dll on 32-bit)
 zlib1.dll
 stdlib/                     Ruby standard library
 Data/Scripts.rxdata         compiled game scripts (required to run)
