@@ -56,7 +56,7 @@ aplicarlas. Para volver todo atrás, borra `%APPDATA%\Pokemon Uranium\mkxp.json`
 
 | Opción | Valores | Qué hace |
 | --- | --- | --- |
-| **Frame Rate** | Monitor, 40, 60, 120, 144 | Cuadros por segundo objetivo. `Monitor` sigue la frecuencia del monitor (mkxp-z fuerza VSync y le informa al juego la frecuencia real); los números son límites fijos. |
+| **Frame Rate** | Monitor, 60, Off | Cuadros por segundo objetivo. `Monitor` sigue la frecuencia del monitor (mkxp-z fuerza VSync y le informa al juego la frecuencia real). `60` limita a 60 fps. `Off` desactiva por completo el limitador: tan rápido como permita la máquina. |
 | **Smoothing** | Off, Bilinear, xBRZ | Filtro al escalar la imagen. `Off` = píxeles nítidos, `Bilinear` = bordes suaves, `xBRZ` = suaviza el pixel art. |
 | **Integer Scaling** | On, Off | Escala por números enteros para que los píxeles queden parejos y nítidos. Desactívalo solo si prefieres estirar la imagen. |
 | **FPS Counter** | On, Off | FPS promedio en el título de la ventana (igual que `F2`). |
@@ -66,15 +66,16 @@ aplicarlas. Para volver todo atrás, borra `%APPDATA%\Pokemon Uranium\mkxp.json`
 
 | | Lo más fiel al original | Lo más fluido en un PC moderno |
 | --- | --- | --- |
-| Frame Rate | `40` | `Monitor` |
+| Frame Rate | `60` | `Monitor` u `Off` |
 | Smoothing | `Off` | `Off` o `Bilinear` |
 | Integer Scaling | `On` | `On` |
 | FPS Counter | `Off` | `Off` |
 | Blit Mode | `On` | `On` |
 
 **Importante:** Uranium está hecho por cuadros, sin compensación de tiempo. Subir el
-frame rate acelera todo el juego. `40` es la velocidad original; `Monitor` en una
-pantalla de 144 Hz lo corre unas 3,6 veces más rápido.
+frame rate acelera todo el juego (es lo buscado). El original corría a 40 fps; `60` es
+1,5 veces más rápido, `Monitor` en 144 Hz unas 3,6 veces, y `Off` tan rápido como
+permita la máquina.
 
 ### Tamaño de ventana
 

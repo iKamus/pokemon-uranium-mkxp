@@ -55,7 +55,7 @@ Last five entries of the in-game *Options* menu. They are written to your user
 
 | Option | Values | What it does |
 | --- | --- | --- |
-| **Frame Rate** | Monitor, 40, 60, 120, 144 | Target frame rate. `Monitor` follows the screen refresh (mkxp-z forces VSync and reports the real refresh rate to the game); the numbers are fixed caps. |
+| **Frame Rate** | Monitor, 60, Off | Target frame rate. `Monitor` follows the screen refresh (mkxp-z forces VSync and reports the real refresh rate to the game). `60` caps at 60 fps. `Off` disables the frame limiter entirely — as fast as the machine allows. |
 | **Smoothing** | Off, Bilinear, xBRZ | Filter used when upscaling. `Off` = crisp pixels, `Bilinear` = soft edges, `xBRZ` = smooths pixel art. |
 | **Integer Scaling** | On, Off | Whole-number scaling so pixels stay even and sharp. Turn off only if you prefer stretching. |
 | **FPS Counter** | On, Off | Average FPS in the window title (same as `F2`). |
@@ -65,15 +65,15 @@ Last five entries of the in-game *Options* menu. They are written to your user
 
 | | Most faithful to the original | Smoothest on a modern PC |
 | --- | --- | --- |
-| Frame Rate | `40` | `Monitor` |
+| Frame Rate | `60` | `Monitor` or `Off` |
 | Smoothing | `Off` | `Off` or `Bilinear` |
 | Integer Scaling | `On` | `On` |
 | FPS Counter | `Off` | `Off` |
 | Blit Mode | `On` | `On` |
 
 **Important:** Uranium is frame-based, with no delta-time compensation. Raising the
-frame rate speeds up the whole game. `40` is the original speed; `Monitor` on a
-144 Hz screen runs ~3.6x faster.
+frame rate speeds up the whole game (this is intended). The original ran at 40 fps;
+`60` is 1.5x faster, `Monitor` on 144 Hz ~3.6x, `Off` as fast as the machine allows.
 
 ### Window size
 
