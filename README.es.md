@@ -11,14 +11,15 @@ juego ni código fuente.
 
 ## Requisitos
 
-- **Windows 10/11, 64 bits** para esta versión (el build de 32 bits se agrega más adelante).
+- **Windows 10/11.** Usa el archivo `win64` en Windows de 64 bits y `win32` en 32 bits.
 - Tu propia copia de **Pokémon Uranium 1.4.0c** (las carpetas `Audio/`, `Graphics/`,
   `Fonts/` y `Data/`). El juego no se distribuye aquí.
 
 ## Instalación
 
 1. Consigue una carpeta limpia de Pokémon Uranium 1.4.0c.
-2. Descarga `uranium-mkxp-engine-win64.zip` desde [Releases](../../releases).
+2. Descarga `uranium-mkxp-engine-win64.zip` (o `uranium-mkxp-engine-win32.zip`) desde
+   [Releases](../../releases).
 3. Extráelo **sobre** la carpeta del juego, reemplazando archivos cuando lo pregunte.
 4. Ejecuta **`mkxp-z.exe`**.
 
