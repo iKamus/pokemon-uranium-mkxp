@@ -1,95 +1,76 @@
-# Pokémon Uranium on mkxp-z — builds
+# Pokémon Uranium on mkxp-z
 
 [Español](README.es.md) · **English**
 
-Windows builds (x64 and 32-bit) of **Pokémon Uranium 1.4.0c** running on the modern
-[mkxp-z](https://github.com/mkxp-z/mkxp-z) engine instead of the old RGSS player.
+Unofficial port of **Pokémon Uranium 1.4.1** to the modern
+[mkxp-z](https://github.com/mkxp-z/mkxp-z) engine (64-bit, Ruby 3.1), replacing the
+original 32-bit RGSS player.
 
-This repository only hosts the **release binaries**. It contains no game assets and
-no source code.
+This repository only hosts the **release binaries**. It contains no game assets and no
+source code; the port's source lives in a private repository.
 
 ## Requirements
 
-- **Windows 10/11.** Use the `win64` archive on 64-bit Windows, `win32` on 32-bit.
-- Your own copy of **Pokémon Uranium 1.4.0c** (the game's `Audio/`, `Graphics/`,
-  `Fonts/` and `Data/` folders). The game is not distributed here.
+- **Windows 10/11, 64-bit.**
+- Your own **Pokémon Uranium 1.4.1** installation: `Uranium.rgssad`, `Audio/`,
+  `Graphics/`, `Fonts/`. The game is not distributed here.
 
 ## Install
 
-1. Get a clean Pokémon Uranium 1.4.0c folder.
-2. Download `uranium-mkxp-engine-win64.zip` (or `uranium-mkxp-engine-win32.zip`)
-   from [Releases](../../releases).
-3. Extract it **over** the game folder, replacing files when asked.
-4. Run **`mkxp-z.exe`**.
+1. Download `Pokemon-Uranium-MKXP-Z-v01.zip` from [Releases](../../releases).
+2. Extract it into the folder that contains `Uranium.exe`, `Uranium.rgssad`,
+   `Audio/`, `Graphics/` and `Fonts/`.
+3. Replace `Uranium.ini` when asked. The zip creates the `Data/` folder.
+4. Run **`mkxp-z.exe`** — not `Uranium.exe`, which is the old 32-bit player.
 
-The archive contains `mkxp-z.exe`, `x64-msvcrt-ruby310.dll` (`msvcrt-ruby310.dll` on
-32-bit), `zlib1.dll`, `stdlib/`, `Data/Scripts.rxdata` and `mkxp.json`.
-
-Saves live in `%USERPROFILE%\Saved Games\Pokemon Uranium`; engine settings in
-`%APPDATA%\Pokemon Uranium\mkxp.json`.
-
-## What's new
-
-- **Gamepad works** — legacy save bindings are migrated to mkxp-z's controller codes
-  and analog sticks get their defaults back.
-- **No RGSS archive / no startup crash** on the save-folder lookup.
-- **In-game engine settings** (see below).
-- **Rebindable controls** — *Options → Set Controls*, keyboard and gamepad.
-- **Scaling** — integer scaling and smoothing for high-resolution displays.
-
-## Controls
-
-| | |
+| File | Purpose |
 | --- | --- |
-| Move / confirm / cancel | keyboard and gamepad (rebindable) |
-| `Alt` + `Enter` | toggle fullscreen |
-| `F2` | toggle FPS display |
-| `F8` | screenshot |
-| `F12` | reset the game |
+| `mkxp-z.exe` | engine |
+| `x64-msvcrt-ruby310.dll`, `zlib1.dll` | engine runtime |
+| `mkxp.json` | engine configuration |
+| `Uranium.ini` | game configuration (`Scripts=` points at the port) |
+| `Data/PortScripts.rxdata` | ported scripts |
 
-## Engine options
+Nothing else changes: maps, events, graphics and audio still come from your
+`Uranium.rgssad`.
 
-Last five entries of the in-game *Options* menu. They are written to your user
-`mkxp.json` and **read only at startup**, so restart the game to apply them. Delete
-`%APPDATA%\Pokemon Uranium\mkxp.json` to reset everything.
+## Saves
 
-| Option | Values | What it does |
-| --- | --- | --- |
-| **Frame Rate** | Monitor, 60, Off | Target frame rate. `Monitor` follows the screen refresh (mkxp-z forces VSync and reports the real refresh rate to the game). `60` caps at 60 fps. `Off` disables the frame limiter entirely — as fast as the machine allows. |
-| **Smoothing** | Off, Bilinear, xBRZ | Filter used when upscaling. `Off` = crisp pixels, `Bilinear` = soft edges, `xBRZ` = smooths pixel art. |
-| **Integer Scaling** | On, Off | Whole-number scaling so pixels stay even and sharp. Turn off only if you prefer stretching. |
-| **FPS Counter** | On, Off | Average FPS in the window title (same as `F2`). |
-| **Blit Mode** | On, Off | GPU blit path. Turn off only if text or tiles fail to render. |
+Saves stay in `%USERPROFILE%\Saved Games\Pokemon Uranium` — the same folder the original
+game uses, so an existing save is picked up automatically. Back it up before the first
+run.
 
-### Recommended settings
+## Do not touch
 
-| | Most faithful to the original | Smoothest on a modern PC |
-| --- | --- | --- |
-| Frame Rate | `60` | `Monitor` or `Off` |
-| Smoothing | `Off` | `Off` or `Bilinear` |
-| Integer Scaling | `On` | `On` |
-| FPS Counter | `Off` | `Off` |
-| Blit Mode | `On` | `On` |
+- **`Uranium.rgssad`** holds the whole game. If it is deleted or renamed, nothing loads.
+- **`mkxp.json`** says `execName: "Uranium"`. mkxp-z derives the `.ini` and `.rgssad`
+  names from it; renaming it makes the game start with an error dialog.
+- **`Uranium.ini`** line `Scripts=Data\PortScripts.rxdata`.
 
-**Important:** Uranium is frame-based, with no delta-time compensation. Raising the
-frame rate speeds up the whole game (this is intended). The original ran at 40 fps;
-`60` is 1.5x faster, `Monitor` on 144 Hz ~3.6x, `Off` as fast as the machine allows.
+## Known warnings
 
-### Window size
+These appear at startup and are harmless:
 
-*Options → Screen Size* (`S` / `M` / `L` / `F`) changes the window scale and
-`Alt` + `Enter` toggles fullscreen. The game renders at 512×384, so larger windows
-are upscaled; use *Integer Scaling* to keep pixels sharp.
+```
+Primary font not found: Arial
+No soundfont specified, sound might be mute
+```
+
+Exceptions, if any, are written to
+`%USERPROFILE%\Saved Games\Pokemon Uranium\errorlog.txt`.
+
+## Status
+
+First public test build. The game boots, reads the original save and plays. Report what
+breaks with the `errorlog.txt` contents and the steps that led to it.
 
 ## Credits
 
-- **Pokémon Uranium** — ~JV~ and the Uranium Team. All game content belongs to them.
-- **mkxp-z** — Ancurio and contributors, GPLv2+.
-- **[warmwinter](https://codeberg.org/warmwinter/mkxp-z)** — the mkxp-z fork this
-  port is built on.
-- Port maintained by [@iKamus](https://github.com/iKamus).
+- **Pokémon Uranium** — ~JV~, Involuntary Twitch and the Uranium Team. All game content
+  belongs to them.
+- **mkxp-z** — Ancurio, and the mkxp-z contributors. GPLv2+.
 
 ## License
 
-Engine binaries are GPL (mkxp-z is GPLv2+; built with HTTPS support, effectively
-GPLv3). Game content and scripts remain the property of the Uranium Team.
+Engine binaries are GPL (mkxp-z is GPLv2+). Game content and the original scripts remain
+the property of the Uranium Team.
