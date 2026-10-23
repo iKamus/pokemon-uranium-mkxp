@@ -1,76 +1,77 @@
-# Pokémon Uranium on mkxp-z
+# Pokémon Uranium en mkxp-z
 
-[Español](README.es.md) · **English**
+**Español** · [English](README.en.md)
 
-Unofficial port of **Pokémon Uranium 1.4.1** to the modern
-[mkxp-z](https://github.com/mkxp-z/mkxp-z) engine (64-bit, Ruby 3.1), replacing the
-original 32-bit RGSS player.
+Port no oficial de **Pokémon Uranium 1.4.1** al motor
+[mkxp-z](https://github.com/mkxp-z/mkxp-z) (64 bits, Ruby 3.1), en reemplazo del
+reproductor RGSS de 32 bits original.
 
-This repository only hosts the **release binaries**. It contains no game assets and no
-source code; the port's source lives in a private repository.
+Este repositorio solo aloja los **binarios de release**. No contiene assets del juego ni
+código fuente; el código del port vive en un repositorio privado.
 
-## Requirements
+## Requisitos
 
-- **Windows 10/11, 64-bit.**
-- Your own **Pokémon Uranium 1.4.1** installation: `Uranium.rgssad`, `Audio/`,
-  `Graphics/`, `Fonts/`. The game is not distributed here.
+- **Windows 10/11 de 64 bits.**
+- Tu propia instalación de **Pokémon Uranium 1.4.1**: `Uranium.rgssad`, `Audio/`,
+  `Graphics/`, `Fonts/`. El juego no se distribuye acá.
 
-## Install
+## Instalación
 
-1. Download `Pokemon-Uranium-MKXP-Z-v01.zip` from [Releases](../../releases).
-2. Extract it into the folder that contains `Uranium.exe`, `Uranium.rgssad`,
-   `Audio/`, `Graphics/` and `Fonts/`.
-3. Replace `Uranium.ini` when asked. The zip creates the `Data/` folder.
-4. Run **`mkxp-z.exe`** — not `Uranium.exe`, which is the old 32-bit player.
+1. Descargá `Pokemon-Uranium-MKXP-Z-v01.zip` desde [Releases](../../releases).
+2. Extraelo en la carpeta que contiene `Uranium.exe`, `Uranium.rgssad`, `Audio/`,
+   `Graphics/` y `Fonts/`.
+3. Reemplazá `Uranium.ini` cuando lo pregunte. El zip crea la carpeta `Data/`.
+4. Ejecutá **`mkxp-z.exe`**, no `Uranium.exe` (ese es el reproductor viejo de 32 bits).
 
-| File | Purpose |
+| Archivo | Para qué |
 | --- | --- |
-| `mkxp-z.exe` | engine |
-| `x64-msvcrt-ruby310.dll`, `zlib1.dll` | engine runtime |
-| `mkxp.json` | engine configuration |
-| `Uranium.ini` | game configuration (`Scripts=` points at the port) |
-| `Data/PortScripts.rxdata` | ported scripts |
+| `mkxp-z.exe` | motor |
+| `x64-msvcrt-ruby310.dll`, `zlib1.dll` | runtime del motor |
+| `mkxp.json` | configuración del motor |
+| `Uranium.ini` | configuración del juego (la línea `Scripts=` apunta al port) |
+| `Data/PortScripts.rxdata` | scripts del port |
 
-Nothing else changes: maps, events, graphics and audio still come from your
+Nada más cambia: mapas, eventos, gráficos y audio siguen saliendo de tu
 `Uranium.rgssad`.
 
-## Saves
+## Partidas
 
-Saves stay in `%USERPROFILE%\Saved Games\Pokemon Uranium` — the same folder the original
-game uses, so an existing save is picked up automatically. Back it up before the first
-run.
+Las partidas siguen en `%USERPROFILE%\Saved Games\Pokemon Uranium`, la misma carpeta que
+usa el juego original, así que la partida existente se toma sola. Hacé una copia de
+seguridad antes del primer arranque.
 
-## Do not touch
+## No tocar
 
-- **`Uranium.rgssad`** holds the whole game. If it is deleted or renamed, nothing loads.
-- **`mkxp.json`** says `execName: "Uranium"`. mkxp-z derives the `.ini` and `.rgssad`
-  names from it; renaming it makes the game start with an error dialog.
-- **`Uranium.ini`** line `Scripts=Data\PortScripts.rxdata`.
+- **`Uranium.rgssad`** contiene todo el juego. Si se borra o se renombra, no carga nada.
+- **`mkxp.json`** dice `execName: "Uranium"`. mkxp-z deriva de ahí el nombre del `.ini` y
+  del `.rgssad`; si se renombra, el juego arranca con un diálogo de error.
+- **`Uranium.ini`**, línea `Scripts=Data\PortScripts.rxdata`.
 
-## Known warnings
+## Avisos conocidos
 
-These appear at startup and are harmless:
+Aparecen al arrancar y son inofensivos:
 
 ```
 Primary font not found: Arial
 No soundfont specified, sound might be mute
 ```
 
-Exceptions, if any, are written to
+Las excepciones, si las hay, se escriben en
 `%USERPROFILE%\Saved Games\Pokemon Uranium\errorlog.txt`.
 
-## Status
+## Estado
 
-First public test build. The game boots, reads the original save and plays. Report what
-breaks with the `errorlog.txt` contents and the steps that led to it.
+Primera build pública de prueba. El juego arranca, lee la partida original y se puede
+jugar. Si algo falla, reportalo con el contenido de `errorlog.txt` y los pasos para
+reproducirlo.
 
-## Credits
+## Créditos
 
-- **Pokémon Uranium** — ~JV~, Involuntary Twitch and the Uranium Team. All game content
-  belongs to them.
-- **mkxp-z** — Ancurio, and the mkxp-z contributors. GPLv2+.
+- **Pokémon Uranium** — ~JV~, Involuntary Twitch y el Uranium Team. Todo el contenido del
+  juego es suyo.
+- **mkxp-z** — Ancurio y los contribuidores de mkxp-z. GPLv2+.
 
-## License
+## Licencia
 
-Engine binaries are GPL (mkxp-z is GPLv2+). Game content and the original scripts remain
-the property of the Uranium Team.
+Los binarios del motor son GPL (mkxp-z es GPLv2+). El contenido y los scripts originales
+del juego siguen siendo propiedad del Uranium Team.
