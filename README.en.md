@@ -25,8 +25,8 @@ source code; the port's source lives in a private repository.
 
 | File | Purpose |
 | --- | --- |
-| `mkxp-z.exe` | engine |
-| Ruby and zlib DLLs | engine runtime |
+| `mkxp-z.exe` | engine (static: needs no DLLs next to the exe) |
+| `stdlib/` and `scripts/` | Ruby runtime and engine helpers |
 | `mkxp.json` | engine configuration |
 | `Uranium.ini` | game configuration (the `Scripts=` line points at the port) |
 | `Data/PortScripts.rxdata` | ported scripts |
@@ -46,6 +46,7 @@ before the first run.
 - **`mkxp.json`** says `execName: "Uranium"`. mkxp-z derives the `.ini` and `.rgssad`
   names from it; renaming it makes the game start with an error dialog.
 - **`Uranium.ini`** line `Scripts=Data\PortScripts.rxdata`.
+- **`Data/PortScripts.rxdata`** holds the ported scripts.
 
 ## Known warnings
 
